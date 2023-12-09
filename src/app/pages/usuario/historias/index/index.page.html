@@ -1,0 +1,50 @@
+<ion-header [translucent]="false" color="light">
+  <ion-toolbar>
+    <ion-buttons class="ion-padding">
+      <ion-title><ion-icon name="bookmarks-outline"></ion-icon> Historias</ion-title>
+      <ion-button routerLink="/historias-crear" slot="end" fill="solid" color="primary" size="small" *ngIf="usuario.tipo == 0">
+        <ion-icon name="add"></ion-icon> Crear historia
+      </ion-button>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item *ngFor="let h of historias">
+    <ion-thumbnail slot="start">
+      <img src="../../../../../assets/img/logo2.png" *ngIf="h.imagen == null" class="img1"/>
+      <img src="{{url_historias_img }}{{ h.imagen }}" *ngIf="h.imagen != null" class="img2"/>
+    </ion-thumbnail>
+    <ion-label>
+      <ion-button disabled color="success" size="small" *ngIf="h.firma == 1">Firmado</ion-button><br>
+      <ion-button disabled color="danger" size="small" *ngIf="h.firma != 1">No Firmado</ion-button><br>
+      <ion-text color="primary">Consecutivo No. {{ h.consecutivo }}</ion-text>
+      <ion-card-title>Profesional: {{ h.profesional}}</ion-card-title>
+      <ion-card-subtitle>Paciente: {{ h.paciente }}</ion-card-subtitle>
+      <p>Fecha: {{ h.fecha }} - Hora: {{ h.hora }}</p>
+      <hr>
+      <ion-buttons class="button">
+        <ion-button fill="outline" size="small" color="success" *ngIf="h.firma != 1 && usuario.tipo == 1" (click)="firmar(h.id)">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> Firmar
+        </ion-button>
+        
+        <ion-button fill="outline" size="small" color="warning" (click)="actualizar(h.id)" *ngIf="usuario.tipo == 0">
+          <ion-icon name="create-outline"></ion-icon> Actualizar
+        </ion-button>
+
+        <ion-button button  (click)="detalles(h.id)" fill="outline" color="secondary" size="small">
+          Ver detalles
+        </ion-button>
+      </ion-buttons>
+    </ion-label>
+  </ion-item><br>
+  
+  <ion-card class="ion-padding ion-text-center" *ngIf="historias == ''">
+    <ion-icon name="happy-outline" class="icon-none"></ion-icon><br>
+    <h4>No tienes historias médicas</h4>
+    <p>Lo sentimos, hasta el momento no tines ninguna historia registrada en Salud Domiciliaria, verifica con el profesional que te atendió en tu última cita médica.</p>
+  </ion-card>
+</ion-content>

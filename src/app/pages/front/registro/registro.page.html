@@ -1,0 +1,68 @@
+<ion-content class="ion-padding">
+
+  <div class="img-logos ion-text-center">
+    <img src="assets/img/logo.png" class="logo" />
+    <img src="assets/img/as.png" class="as" /><br>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-header class="ion-text-center">
+        <ion-item button class="ion-text-left ion-text-info" routerLink="/login" >
+          <ion-icon name="arrow-back" ></ion-icon> Regresar al login
+        </ion-item>
+        <ion-card-title>Crear Usuario</ion-card-title>
+        <ion-card-subtitle>Por favor complete el formulario con sus datos de usuario y sus datos de perfil, para poder crear su usuario</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-segment value="0" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="0">
+          <ion-label>Usuario</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          <ion-label>Perfil</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <div *ngIf="datos_usuario" class="ion-padding">
+        <ion-label>Tipo de usuario</ion-label>
+        <ion-item>
+          <ion-select value="" multiple="false" placeholder="Seleccione el tipo de usuario" mode="ios" required>
+            <ion-select-option value="0">Profesional</ion-select-option>
+            <ion-select-option value="1">Paciente</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item><br>
+          <ion-label position="floating">Número de identificacion</ion-label>
+          <ion-input type="number" mode="number" required></ion-input>
+        </ion-item><br>
+      </div>
+      <div *ngIf="datos_perfil">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" mode="text" required></ion-input>
+        </ion-item><br>
+        <ion-item>
+          <ion-label position="floating">Apellidos</ion-label>
+          <ion-input type="text" mode="text" required></ion-input>
+        </ion-item><br>
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input type="email" mode="email" required></ion-input>
+        </ion-item><br>
+        <ion-item>
+          <ion-label position="floating">Número de celular</ion-label>
+          <ion-input type="tel" mode="tel" required></ion-input>
+        </ion-item><br>
+        <ion-item>
+          <ion-label position="floating">Ubicación</ion-label>
+          <ion-input type="text" mode="text" required></ion-input>
+        </ion-item>
+        <ion-item button color="primary" class="ion-text-center rounded">
+          <ion-label>Crear Usuario</ion-label>
+        </ion-item>
+      </div>
+
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>

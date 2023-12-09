@@ -1,0 +1,38 @@
+<ion-content class="ion-padding">
+
+  <div class="img-logos ion-text-center">
+    <img src="assets/img/logo.png" class="logo" />
+    <img src="assets/img/as.png" class="as" /><br>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>Inicio de Sesión</ion-card-title>
+      </ion-card-header>
+      <ion-label>Tipo de usuario</ion-label>
+      <ion-item>
+        <ion-select value="" multiple="false" placeholder="Seleccione el tipo de usuario" mode="ios" name="tipo" #tipo required (ionChange)="tipo_usuario(tipo)">
+          <ion-select-option value="0">Profesional</ion-select-option>
+          <ion-select-option value="1">Paciente</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item><br>
+        <ion-label position="floating">Número de identificacion</ion-label>
+        <ion-input type="number" required name="num_identificacion" #num_identificacion></ion-input>
+      </ion-item><br>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" required name="password" #password></ion-input>
+      </ion-item><br>
+      <ion-button expand="block" fill="solid" shape="round" (click)="login(num_identificacion, password)">
+        iniciar sesión
+      </ion-button>
+      <ion-item class="ion-text-center">
+        <ion-label color="medium">---- ¿Aún no tienes cuenta? ----</ion-label>
+      </ion-item>
+      <ion-item button class="ion-text-center ion-text-capitalize rounded" color="dark" (click)="registro()">
+        <ion-label color="medium">registrate como usuario</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

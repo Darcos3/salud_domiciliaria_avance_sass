@@ -1,0 +1,7 @@
+{
+  "name": "sda_sas_app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

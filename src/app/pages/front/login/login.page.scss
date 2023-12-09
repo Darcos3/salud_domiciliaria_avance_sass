@@ -1,0 +1,44 @@
+ion-content {
+    --background: url('../../../../assets/img/bg-login.png') !important;
+    --background-size: cover !important;
+}
+
+.img-logos {
+    text-align: center !important;
+    background: #fff;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+    margin-bottom: -95px;
+    border-radius: 10% 10% 10px 10px;
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+ion-card {
+    margin-top: 20%;
+}
+
+.logo {
+    width: 180px;
+    height: auto;
+    /* display: block; */
+    /* margin: 0 auto; */
+    margin-top: -33px;
+}
+
+.as{
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: -30px;
+}
+
+ion-label {
+    margin: 0 auto;
+}
+
+.rounded {
+    border-radius: 10px;
+}

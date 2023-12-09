@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "353695002733",
+    "project_id": "saluddomiciliaria-73e38",
+    "storage_bucket": "saluddomiciliaria-73e38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353695002733:android:dabdbd5e434afb05014f64",
+        "android_client_info": {
+          "package_name": "sas.avancesoftware.saluddomiciliaria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcQK_rHvkT32aE505r7mATXx3GGzVnmls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

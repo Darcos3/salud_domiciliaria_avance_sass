@@ -1,0 +1,33 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <div class="ion-text-center">
+            <ion-img src="assets/img/logo.png"></ion-img>
+            <ion-img src="assets/img/as.png" class="as"></ion-img>
+            <hr>
+            <ion-text class="ion-text-capitalize" color="dark">{{ usuario.usuario }}</ion-text><br>
+            <ion-note *ngIf="usuario.tipo == 0">Profesional</ion-note>
+            <ion-note *ngIf="usuario.tipo == 1">Paciente</ion-note>
+          </div>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="{{p.icon}}" color="dark"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item  lines="none" button (click)="cerrarSesion()" auto-hide="false">
+            <ion-icon aria-hidden="true" slot="start" name="log-out-outline" color="danger"></ion-icon>
+            <ion-label color="danger">Cerrar Sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title><ion-icon name="settings-outline"></ion-icon> Configuración de Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <div *ngIf="datos_usuario" >
+    <ion-card>
+      <ion-card-header>
+        <p class="ion-text-justify">Si deseas puedes modificar los datos del formulario, y seleccionar el boton para poder actualizar tu usuario</p>
+        <ion-card-title color="primary">Datos de usuario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Número de identificación</ion-label>
+          <ion-input type="text" value="{{ usuarios.num_identificacion }}" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nombre de usuario</ion-label>
+          <ion-input type="text" name="nombreusuario" #nombreusuario value="{{ usuarios.usuario }}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input type="email" name="email" #email value="{{ usuarios.correo_electronico }}"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary">Datos de perfil</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" name="nombre" #nombre value="{{ rol.nombre}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellidos</ion-label>
+          <ion-input type="text" name="apellidos" #apellidos value="{{ rol.apellidos}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Número de celular</ion-label>
+          <ion-input type="tel" name="num_celular" #num_celular value="{{ rol.num_celular }}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Ubicación</ion-label>
+          <ion-input type="text" name="ubicacion" #ubicacion value="{{ rol.ubicacion }}"></ion-input>
+        </ion-item>
+        <ion-button (click)="actualizar(nombreusuario, email, nombre, apellidos, num_celular, ubicacion )" expand="block" fill="solid" color="primary" shape="round">
+          Actualizar perfil
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+</ion-content>

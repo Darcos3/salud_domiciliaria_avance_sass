@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Actualizar historia No {{ id }}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/historias-index">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        Ver Historias
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" *ngFor="let h of historia">
+  <ion-card>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="{{url_historias_img}}{{h.imagen}}" *ngIf="h.imagen != null" >
+        <img src="../../../../../assets/img/logo2.png" *ngIf="h.imagen == null" >
+      </ion-thumbnail>
+      <ion-label>Imagen de la visita al paciente</ion-label>
+    </ion-item>
+    <ion-card-header>
+      <ion-card-title color="primary">Datos Generales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="ion-text-rigth">
+        <ion-label position="fixed">Paciente</ion-label>
+        <ion-input type="text" value="{{ h.paciente }}" required readonlu></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Consecutivo</ion-label>
+        <ion-input class="ion-text-rigth" type="number" readonly value="{{ h.consecutivo }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Fecha</ion-label>
+        <ion-input type="date" name="fecha" #fecha required value="{{ h.fecha }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Hora</ion-label>
+        <ion-input type="time" name="hora" #hora required value="{{ h.hora}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Profesional</ion-label>
+        <ion-input type="text" value="{{ h.profesional }}"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">Datos del Paciente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Evolución final</ion-label>
+      <ion-item>
+        <ion-textarea name="evolucion" #evolucion value="{{ h.evolucion_final}}"></ion-textarea>
+      </ion-item><br>
+      <ion-label for="">Informacion Relevante</ion-label>
+      <ion-item>
+        <ion-textarea name="inf_relevante" #inf_relevante required value="{{ h.inf_relevante }}"></ion-textarea>
+      </ion-item><br>
+      <ion-label>Concepto Profesional</ion-label>
+      <ion-item>
+        <ion-textarea name="consepto" #concepto required value="{{ h.concepto_profesional }}"></ion-textarea>
+      </ion-item><br>
+      <ion-label>Antecedentes del Paciente</ion-label>
+      <ion-item>
+        <ion-textarea name="antecedentes" #antecedentes required value="{{ h.inf_antecedentes }}"></ion-textarea>
+      </ion-item><br>
+      <ion-label>Recomendaciones al Paciente</ion-label>
+      <ion-item>
+        <ion-textarea name="recomendaciones" #recomendaciones required value="{{ h.recomendaciones }}"></ion-textarea>
+      </ion-item><br>
+      <ion-item button (click)="cargarImagen()">
+        <ion-icon slot="start" name="add" color="primary" *ngIf="currentImage == null"></ion-icon>
+        <ion-thumbnail *ngIf="currentImage != null">
+          <img src="{{currentImage}}">
+        </ion-thumbnail>
+        <ion-label>Cargar Imagen Visita al Paciente</ion-label>
+      </ion-item>
+      <ion-button (click)="actualizar(fecha, hora, evolucion, inf_relevante, concepto, antecedentes, recomendaciones)"
+        expand="block" fill="solid" shape="round">
+        Actualizar historia
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

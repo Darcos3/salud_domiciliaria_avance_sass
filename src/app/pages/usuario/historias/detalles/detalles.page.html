@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Detalles de la historia</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/historias-index">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        Ver Historias
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" *ngFor="let h of historia">
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <img src="../../../../../assets/img/logo2.png" *ngIf="h.imagen == null" class="img1"/>
+      <img src="{{url_historias_img }}{{ h.imagen }}" *ngIf="h.imagen != null" class="img2"/>
+    </ion-thumbnail>
+    <ion-label>Imagen de la visita al paciente</ion-label>
+  </ion-item>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title color="primary">Datos Generales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="ion-text-rigth">
+        <ion-label position="fixed">Paciente</ion-label>
+        <ion-input type="text" readonly value="{{ h.paciente }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Consecutivo</ion-label>
+        <ion-input readonly value="{{ h.consecutivo }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Fecha</ion-label>
+        <ion-input readonly value="{{ h.fecha }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Hora</ion-label>
+        <ion-input readonly value="{{ h.hora }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Profesional</ion-label>
+        <ion-input readonly value="{{ h.profesional }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Firmado</ion-label>
+        <ion-input readonly value="Si" *ngIf="h.firma == 1"></ion-input>
+        <ion-input readonly value="No" *ngIf="h.firma != 1"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">Datos del Paciente</ion-card-title>
+    </ion-card-header>  
+    <ion-card-content>
+      <ion-item>
+        <h4 color="primary">Evolución Final</h4><br>
+        <p>{{ h.evolucion_final }}</p> 
+      </ion-item><br>
+      <ion-item>
+        <h4>Información Relevante</h4><br>
+        <p>{{ h.inf_relevante }}</p> 
+      </ion-item><br>
+      <ion-item>
+        <h4>Concepto Profesional</h4><br>
+        <p>{{ h.concepto_profesional }}</p> 
+      </ion-item><br>
+      <ion-item>
+        <h4>Antecedentes del Paciente</h4><br>
+        <p>{{ h.inf_antecedentes }}</p> 
+      </ion-item><br>
+      <ion-item>
+        <h4>Recomendaciones al Paciente</h4><br>
+        <p>{{ h.recomendaciones }}</p> 
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

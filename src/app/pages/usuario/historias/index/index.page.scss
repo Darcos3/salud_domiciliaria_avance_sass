@@ -1,0 +1,38 @@
+ion-item  {
+    box-shadow: 0px 0px 1px 1px #222;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+ion-card {
+    box-shadow: inset 0px 0px 10px 0px #222;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+ion-badge {
+    position: relative;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.icon-none {
+    font-size: 10em;
+}
+
+.button {
+    position: relative;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.img1 {
+    width: 200px;
+    height: 67px;
+    margin-top: -30px;
+}
+
+.img2 {
+    width: 80px;
+    margin-top: -30px;
+}

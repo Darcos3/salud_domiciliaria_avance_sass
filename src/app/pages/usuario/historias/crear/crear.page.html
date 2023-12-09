@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Crear historia</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/historias-index">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        Ver Historias
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title>Datos Generales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="ion-text-rigth">
+        <ion-label position="fixed">Paciente</ion-label>
+        <ion-select value="" multiple="false" mode="ios" required name="paciente" #paciente placeholder="Seleccione un paciente" (ionChange)="seleccionarPaciente(paciente)" >
+          <ion-select-option [value]="p.num_identificacion" *ngFor="let p of pacientes">{{ p.paciente }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Consecutivo</ion-label>
+        <ion-input class="ion-text-rigth" type="number" readonly value="{{ form.consecutivo }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Fecha</ion-label>
+        <ion-input type="date" name="fecha" #fecha required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Hora</ion-label>
+        <ion-input type="time" name="hora" #hora required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Profesional</ion-label>
+        <ion-input type="text" value="{{ usuario.nombre }} {{ usuario.apellidos }}"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Datos del Paciente</ion-card-title>
+    </ion-card-header>  
+    <ion-card-content>
+      <ion-item>
+        <ion-textarea placeholder="Evolución Final" name="evolucion" #evolucion required></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Información relevante del paciente" name="inf_relevante" #inf_relevante required></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Concepto profesional" name="consepto" #concepto required></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Antecedentes del paciente" name="antecedentes" #antecedentes required></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Recomendaciones al paciente" name="recomendaciones" #recomendaciones required></ion-textarea>
+      </ion-item>
+      <ion-item button (click)="cargarImagen()">
+        <ion-icon slot="start" name="add" color="primary" *ngIf="currentImage == null "></ion-icon>
+        <ion-thumbnail *ngIf="currentImage != null">
+          <img src="{{currentImage}}">
+        </ion-thumbnail>
+        <ion-label>Cargar Imagen Visita al Paciente</ion-label>
+      </ion-item>
+      <ion-button (click)="crear(fecha, hora, evolucion, inf_relevante, concepto, antecedentes, recomendaciones)" expand="block" fill="solid" shape="round">
+        Crear historia
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

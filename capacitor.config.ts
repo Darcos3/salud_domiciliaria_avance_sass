@@ -1,0 +1,17 @@
+import { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  appId: 'sas.avancesoftware.saluddomiciliaria',
+  appName: 'salud domicialiaria',
+  webDir: 'www',
+  server: {
+    androidScheme: 'https'
+  },
+  plugins: {
+    PushNotifications: {
+      presentationOptions: ["badge", "sound", "alert"],
+    },
+  },
+};
+
+export default config;
